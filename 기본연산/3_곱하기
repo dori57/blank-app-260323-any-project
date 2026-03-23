@@ -1,0 +1,32 @@
+import random
+
+def generate_multiplication_problems(n):
+    problems = []
+    # 다양한 곱셈 문제를 생성하기 위해 범위를 나누어 설정
+    # 결과가 너무 커지지 않도록 범위를 조절
+    ranges = [
+        ((1, 9), (1, 9)),      # 한 자리 수 × 한 자리 수
+        ((10, 99), (1, 9)),    # 두 자리 수 × 한 자리 수
+        ((10, 99), (10, 99)),  # 두 자리 수 × 두 자리 수
+        ((100, 999), (1, 9)),  # 세 자리 수 × 한 자리 수
+    ]
+
+    for _ in range(n):
+        # 무작위로 범위 선택
+        (range_a_min, range_a_max), (range_b_min, range_b_max) = random.choice(ranges)
+        a = random.randint(range_a_min, range_a_max)
+        b = random.randint(range_b_min, range_b_max)
+        problem = f"{a} × {b} = ?"
+        answer = a * b
+        problems.append((problem, answer))
+
+    return problems
+
+# 30개의 다양한 자연수 곱셈 문제 생성
+problems = generate_multiplication_problems(30)
+
+# 문제 출력
+for i, (problem, answer) in enumerate(problems, 1):
+    print(f"문제 {i}: {problem}")
+    print(f"답: {answer}")
+    print("-" * 20)

@@ -1,6 +1,45 @@
 import streamlit as st
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+st.title("🧮 기본 연산 연습 프로젝트")
+
+st.write("""
+이 프로젝트는 어린이들이나 초보자들이 덧셈, 뺄셈, 곱셈, 나눗셈과 같은 기본적인 수학 연산을 재미있게 연습할 수 있도록 설계되었습니다.
+
+### 프로젝트 목표
+- 기본적인 수학 연산 능력 향상
+- 문제 해결 능력 개발
+- 재미있는 학습 경험 제공
+
+### 포함된 연산
+- **덧셈**: 자연수 덧셈 문제 연습
+- **뺄셈**: 자연수 뺄셈 문제 연습
+- **곱셈**: 자연수 곱셈 문제 연습
+- **나눗셈**: 자연수 나눗셈 문제 연습
+
+각 연산별로 다양한 난이도의 문제를 제공하며, 정답 확인 기능이 포함되어 있습니다.
+
+### 시작하기
+왼쪽 사이드바에서 원하는 연산을 선택하여 연습을 시작하세요!
+
+**Streamlit**을 사용하여 웹 기반으로 쉽게 접근할 수 있습니다.
+""")
+
+# 사이드바에 연산 선택 메뉴 추가
+st.sidebar.title("연산 선택")
+operation = st.sidebar.radio(
+    "연습할 연산을 선택하세요:",
+    ("덧셈", "뺄셈", "곱셈", "나눗셈")
 )
+
+if operation == "덧셈":
+    st.sidebar.write("덧셈 연습 페이지로 이동합니다.")
+    # 여기서 덧셈 관련 코드를 추가하거나, 별도 파일로 연결
+elif operation == "뺄셈":
+    st.sidebar.write("뺄셈 연습 페이지로 이동합니다.")
+    # 뺄셈 관련 코드
+elif operation == "곱셈":
+    st.sidebar.write("곱셈 연습 페이지로 이동합니다.")
+    # 곱셈 관련 코드
+elif operation == "나눗셈":
+    st.sidebar.write("나눗셈 연습 페이지로 이동합니다.")
+    # 나눗셈 관련 코드

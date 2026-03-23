@@ -1,0 +1,31 @@
+import random
+
+def generate_addition_problems(n):
+    problems = []
+    # 다양한 자리수의 덧셈 문제를 생성하기 위해 범위를 나누어 설정
+    ranges = [
+        (1, 9),      # 한 자리 수
+        (10, 99),    # 두 자리 수
+        (100, 999),  # 세 자리 수
+        (1000, 9999) # 네 자리 수
+    ]
+
+    for _ in range(n):
+        # 무작위로 범위 선택
+        range_a, range_b = random.choice(ranges)
+        a = random.randint(range_a, range_b)
+        b = random.randint(range_a, range_b)
+        problem = f"{a} + {b} = ?"
+        answer = a + b
+        problems.append((problem, answer))
+
+    return problems
+
+# 30개의 다양한 자연수 덧셈 문제 생성
+problems = generate_addition_problems(30)
+
+# 문제 출력
+for i, (problem, answer) in enumerate(problems, 1):
+    print(f"문제 {i}: {problem}")
+    print(f"답: {answer}")
+    print("-" * 20)

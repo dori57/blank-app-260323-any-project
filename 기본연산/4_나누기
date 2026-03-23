@@ -1,0 +1,33 @@
+import random
+
+def generate_division_problems(n):
+    problems = []
+    # 다양한 나눗셈 문제를 생성하기 위해 범위를 나누어 설정
+    # 나머지가 0이 되도록 a = b * c로 설정
+    ranges = [
+        ((1, 9), (1, 10)),      # 한 자리 수 ÷ 한 자리 수 (결과 1-10)
+        ((10, 99), (2, 10)),    # 두 자리 수 ÷ 한 자리 수 (결과 1-49)
+        ((100, 999), (2, 10)),  # 세 자리 수 ÷ 한 자리 수 (결과 10-499)
+        ((10, 99), (10, 99)),   # 두 자리 수 ÷ 두 자리 수 (결과 1-9)
+    ]
+
+    for _ in range(n):
+        # 무작위로 범위 선택
+        (range_b_min, range_b_max), (range_c_min, range_c_max) = random.choice(ranges)
+        b = random.randint(range_b_min, range_b_max)
+        c = random.randint(range_c_min, range_c_max)
+        a = b * c  # 나머지가 0이 되도록
+        problem = f"{a} ÷ {b} = ?"
+        answer = c
+        problems.append((problem, answer))
+
+    return problems
+
+# 30개의 다양한 자연수 나눗셈 문제 생성
+problems = generate_division_problems(30)
+
+# 문제 출력
+for i, (problem, answer) in enumerate(problems, 1):
+    print(f"문제 {i}: {problem}")
+    print(f"답: {answer}")
+    print("-" * 20)
